@@ -146,7 +146,7 @@
   function imageQuestions() {
     var out = [];
     D.imageQuiz.forEach(function (it) {
-      var others = shuffle(D.imageQuiz.filter(function (x) { return x.id !== it.id; })).map(function (x) { return x.name; });
+      var others = shuffle(D.imageQuiz.filter(function (x) { return x.id !== it.id; })).map(function (x) { return x.name; }).slice(0, 3);
       out.push({ t: "ЭКГ", img: it.img, q: "Что показано на ЭКГ?", o: [it.name].concat(others), a: 0,
         e: it.name + ". " + it.hint + " " + (it.shock ? "Ритм подлежит дефибрилляции." : "Ритм не подлежит дефибрилляции.") });
       out.push({ t: "ЭКГ", img: it.img, q: "Подлежит ли этот ритм дефибрилляции?", o: ["Да, нужен разряд", "Нет, разряд не показан"], a: it.shock ? 0 : 1, fixed: true,
